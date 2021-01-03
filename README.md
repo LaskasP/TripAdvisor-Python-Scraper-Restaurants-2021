@@ -4,7 +4,7 @@ An implementation on python for scraping unique Restaurants's reviews or scrapin
 Features implemented:
 1) Scrape only one restaurants's reviews and store it in csv. The feutures of each review are restaurant's name, username, date, review, rating 
 2) Scrape a whole area like a city(all restaurants in this region)
-3) Scrape basic info(Restaurant's name, Address, Average Rating, Number of reviews) of each restaurant and store it in another .csv
+3) Scrape basic info(Restaurant's name, Address, Average Rating, Number of reviews) of each restaurant and store it in another csv
 4) The click function to open the "more" button of the reviews
 5) The click function to change the page
 
