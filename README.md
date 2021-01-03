@@ -1,4 +1,4 @@
-# TripAdvisor-Python-Scraper-Restaurants-2021 
+# TripAdvisor-Review-Python-Scraper-Restaurants-2021 
 An implementation on python for scraping unique Restaurants's reviews or scraping a whole geographical area's reviews from TripAdvisor
 
 Features implemented:
