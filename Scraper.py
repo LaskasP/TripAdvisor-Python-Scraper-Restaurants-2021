@@ -4,12 +4,15 @@ import csv
 from selenium import webdriver
 import time
 import sys
+import argparse
+
+
 
 pathToReviews = "TripReviews.csv"
 pathToStoreInfo = "TripStoresInfo.csv"
 
 #webDriver init
-driver = webdriver.Chrome('chromedriver.exe')
+driver = webdriver.Chrome('E-food-Python-Scraper-2021\chromedriver.exe')
 
 def scrapeRestaurantsUrls(tripURLs):
     urls =[]
@@ -35,19 +38,18 @@ def scrapeRestaurantInfo(url):
         data_writer = csv.writer(trip, delimiter = ',', quotechar = '"', quoting = csv.QUOTE_MINIMAL)
         data_writer.writerow([storeName, storeAddress, avgRating, noReviews])
 
-#inputs
-if (len(sys.argv) > 1):
-    if sys.argv[1].lower() == 't':
-        info = True
-    else:
-        info = False 
-    if sys.argv[2] == 'm':
-        urls = scrapeRestaurantsUrls([sys.argv[3]])
-    else:
-        urls = [sys.argv[2]]
+parser = argparse.ArgumentParser()
+parser.add_argument('--url', required=True, help ='need starting url')
+parser.add_argument('-i', '--info', action='store_true', help="Collects restaurant's info")
+parser.add_argument('-m', '--many', action='store_true', help="Collects whole area info")
+args = parser.parse_args()
+startingUrl = args.url 
+if args.info:
+    info = True
+if args.many:
+    urls = scrapeRestaurantsUrls(startingUrl)
 else:
-    print('Invalid input.')
-    exit(1)
+    urls = startingUrl
 
 for url in urls:
 
