@@ -12,7 +12,7 @@ pathToReviews = "TripReviews.csv"
 pathToStoreInfo = "TripStoresInfo.csv"
 
 #webDriver init
-driver = webdriver.Chrome('E-food-Python-Scraper-2021\chromedriver.exe')
+
 
 def scrapeRestaurantsUrls(tripURLs):
     urls =[]
@@ -46,13 +46,16 @@ args = parser.parse_args()
 startingUrl = args.url 
 if args.info:
     info = True
-if args.many:
-    urls = scrapeRestaurantsUrls(startingUrl)
 else:
-    urls = startingUrl
+    info = False
+if args.many:
+    urls = scrapeRestaurantsUrls([startingUrl])
+else:
+    urls = [startingUrl]
 
+driver = webdriver.Chrome('chromedriver.exe')
 for url in urls:
-
+    print(url)
     #if you want to scrape restaurants info
     if info == True:
         scrapeRestaurantInfo(url)
